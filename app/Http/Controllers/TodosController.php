@@ -31,7 +31,7 @@ class TodosController extends Controller
     {
         // dd(request()->all());
         $this->validate(request(), [
-            'name' => 'required|min:6|max:12',
+            'name' => 'required|min:6|max:25',
             'description' => 'required'
         ]);
 
@@ -44,6 +44,8 @@ class TodosController extends Controller
         $todo->completed = false;
 
         $todo->save();
+
+        session()->flash('success', 'Todo Created Successfully!');
 
         return redirect('/todos');
     }
@@ -67,12 +69,16 @@ class TodosController extends Controller
 
         $todo->save();
 
+        session()->flash('success', 'Todo Updated Successfully!');
+
         return redirect('/todos');
     }
 
     public function destroy(Todo $todo)
     {
         $todo->delete();
+
+        session()->flash('success', 'Todo Deleted Successfully!');
 
         return redirect('/todos');
     }

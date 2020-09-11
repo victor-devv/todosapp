@@ -25,10 +25,10 @@
                 <form action="/save-todo" method="POST">
                     @csrf
                     <div class="form-group">
-                        <input type="text" class="form-control" name="name" placeholder="Todo Name">
+                        <input type="text" class="form-control" name="name" placeholder="Todo Name" value="{{ old('name') }}">
                     </div>
                     <div class="form-group">
-                        <textarea name="description" id="" cols="5" rows="5" class="form-control" placeholder="Todo Description"></textarea>
+                        <textarea name="description" id="" cols="5" rows="5" class="form-control" placeholder="Todo Description">{{ old('description') }}</textarea>
                     </div>
                     <div class="form-group text-center">
                         <button type="submit" class="btn btn-success">Save</button>
